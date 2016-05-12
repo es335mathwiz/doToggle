@@ -8,7 +8,7 @@ $symPath=$toGit<>"mathAMA/SymbolicAMA/SymbolicAMA/";
 $numPath=$toGit<>"mathAMA/NumericAMA/NumericAMA/";
 $modPath=$toGit<>"mathAMA/AMAModel/";
 $proPath=$toGit<>"ProtectedSymbols/";
-$accPath=$toGit<>"AccelerateAMA/AcceleratAMA/";
+$accPath=$toGit<>"AccelerateAMA/AccelerateAMA/";
 $stackStochPath=$toGit<>"stackStochSims/";
 $Path = 
 Join[$Path, 
