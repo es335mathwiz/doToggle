@@ -146,7 +146,7 @@ sequenceToListString[result]
 
 
 $frbLoc="/msu/home/m1gsa00/.m2/repository/";
-$garyMacLoc"/Users/garyanderson/.m2/repository/";
+$garyMacLoc="/Users/garyanderson/.m2/repository/";
 $reposLoc=
 Which[
 FileExistsQ[$frbLoc],$frbLoc,
