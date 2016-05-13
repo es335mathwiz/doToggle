@@ -1,7 +1,7 @@
 (*should be in a subdirectory of the directory git containing 
 the required directories*)
-$fmtPath="/msu/home/m1gsa00/git/paperProduction/FormatOptimize/";
 $toGit="../";
+$fmtPath=$toGit<>"paperProduction/FormatOptimize/";
 (*$Path=PrependTo[$Path,$toGit<>"experFRBUSMPS"];*)
 $Path=PrependTo[$Path,$toGit<>"mathAMA/AMAModel"];
 $symPath=$toGit<>"mathAMA/SymbolicAMA/SymbolicAMA/";
@@ -25,6 +25,11 @@ $amaSer,
 $smolPath*)}];
 Needs["JLink`"]
 InstallJava[];
+$toSoftware=$toGit<> "../softwareInstalls/"
+AddToClassPath[FileNameJoin[{Directory[],$toSoftware<>"SaxonHE9-7-0-5J/saxon9he.jar"}]]
+AddToClassPath[FileNameJoin[{Directory[],$toSoftware<>"SaxonHE9-7-0-5J/saxon9-xqj.jar"}]]
+
+
 Needs["AMAModel`"]
 Needs["AccelerateAMA`"]
 Needs["Stack`"]
