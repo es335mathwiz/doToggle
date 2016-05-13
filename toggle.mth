@@ -145,15 +145,20 @@ sequenceToListString[result]
 
 
 
+$frbLoc="/msu/home/m1gsa00/.m2/repository/";
+$garyMacLoc"/Users/garyanderson/.m2/repository/";
+$reposLoc=
+Which[
+FileExistsQ[$frbLoc],$frbLoc,
+FileExistsQ[$garyMacLoc],$garyMacLoc
+];
+
+AddToClassPath[FileNameJoin[{$reposLoc,"gov/frb/ma/msu/dynareAntlr/1.0/dynareAntlr-1.0.jar"}]]
+AddToClassPath[FileNameJoin[{$reposLoc,"org/antlr/antlr/3.5.2/antlr-3.5.2.jar"}]]
+AddToClassPath[FileNameJoin[{$reposLoc,"org/antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.jar"}]]
 
 
 
-
-
-AddToClassPath["/msu/home/m1gsa00/git/DynareParsers/target/dynareAntlr-1.0.jar"]
-(*AddToClassPath["/msu/res1/Software/antlr/antlr-4.0-complete.jar"]*)
-AddToClassPath["/msu/res1/Software/antlr/antlr-3.5-complete.jar"]
-AddToClassPath["/msu/res2/m1gsa00/xalan-j_2_7_1/xalan.jar"]
 
 cnstrctDModel[inFName_String,outFName_String]:=
 With[{eqns=getDynareEqns[inFName],
