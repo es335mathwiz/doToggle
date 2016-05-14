@@ -26,8 +26,6 @@ $smolPath*)}];
 Needs["JLink`"]
 InstallJava[];
 $toSoftware=$toGit<> "../softwareInstalls/"
-AddToClassPath[FileNameJoin[{Directory[],$toSoftware<>"SaxonHE9-7-0-5J/saxon9he.jar"}]]
-AddToClassPath[FileNameJoin[{Directory[],$toSoftware<>"SaxonHE9-7-0-5J/saxon9-xqj.jar"}]]
 
 
 Needs["AMAModel`"]
