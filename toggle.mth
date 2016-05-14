@@ -154,8 +154,8 @@ FileExistsQ[$garyMacLoc],$garyMacLoc
 ];
 
 $toggleDirfrbLocDesktop="g:/git/doToggle/";
-$toggleDirfrbLoc="/msu/home/m1gsa00/git/doToggle";
-$toggleDirgaryMacLoc="/Users/garyanderson/git/doToggle";
+$toggleDirfrbLoc="/msu/home/m1gsa00/git/doToggle/";
+$toggleDirgaryMacLoc="/Users/garyanderson/git/doToggle/";
 $toggleDirLoc=
 Which[
 FileExistsQ[$toggleDirfrbLoc],$toggleDirfrbLoc,
@@ -216,7 +216,7 @@ DeleteFile["rbc.mod"]
 
 
 
-{varsRBC,ig,paramsRBC,ig,{ig,eqnsRBC},notSubsRBC,ig}=parseMod["./","rbc","./"]
+{varsRBC,ig,paramsRBC,ig,{ig,eqnsRBC},notSubsRBC,ig}=parseMod[$toggleDirLoc,"rbc",$toggleDirLoc]
 
 varsNoAerr=ToExpression/@getVarNames[xmlFileNow];
 
