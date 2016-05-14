@@ -140,13 +140,26 @@ sequenceToListString[result]
 
 
 
+$frbLocDesktop="g:/.m2/repository/";
 $frbLoc="/msu/home/m1gsa00/.m2/repository/";
-$garyMacLoc"/Users/garyanderson/.m2/repository/";
+$garyMacLoc="/Users/garyanderson/.m2/repository/";
 $reposLoc=
 Which[
 FileExistsQ[$frbLoc],$frbLoc,
+FileExistsQ[$frbLocDesktop],$frbLocDesktop,
 FileExistsQ[$garyMacLoc],$garyMacLoc
 ];
+
+$toggleDirfrbLocDesktop="g:/git/doToggle/";
+$toggleDirfrbLoc="/msu/home/m1gsa00/git/doToggle";
+$toggleDirgaryMacLoc="/Users/garyanderson/git/doToggle";
+$toggleDirLoc=
+Which[
+FileExistsQ[$toggleDirfrbLoc],$toggleDirfrbLoc,
+FileExistsQ[$toggleDirfrbLocDesktop],$toggleDirfrbLocDesktop,
+FileExistsQ[$toggleDirgaryMacLoc],$toggleDirgaryMacLoc
+];
+SetDirectory[$toggleDirLoc]
 
 AddToClassPath[FileNameJoin[{$reposLoc,"gov/frb/ma/msu/dynareAntlr/1.0/dynareAntlr-1.0.jar"}]]
 AddToClassPath[FileNameJoin[{$reposLoc,"org/antlr/antlr/3.5.2/antlr-3.5.2.jar"}]]
@@ -184,7 +197,9 @@ WriteString[outFName,modStr]]
 
 
 Print["executing code for rbcChk.in.xml example"]
-xmlFileRBC=Directory[]<>"/rbcChk.in.xml";
+xmlFileRBC=StringReplace[
+"file:///"<>FileNameJoin[{Directory[],"/rbcChk.in.xml"},
+OperatingSystem->"Unix"],"\\"->"/"]
 
 
 caRBC=getCoeffs[xmlFileRBC];
