@@ -1,6 +1,9 @@
-(*should be in a subdirectory of the directory git containing 
+(*should be in run from doToggle directory,
+subdirectory of the directory git containing 
 the required directories*)
+$toggleDirLoc=Directory[]<>"/";
 $toGit="../";
+
 $fmtPath=$toGit<>"paperProduction/FormatOptimize/";
 (*$Path=PrependTo[$Path,$toGit<>"experFRBUSMPS"];*)
 $Path=PrependTo[$Path,$toGit<>"mathAMA/AMAModel"];
@@ -153,16 +156,6 @@ FileExistsQ[$frbLocDesktop],$frbLocDesktop,
 FileExistsQ[$garyMacLoc],$garyMacLoc
 ];
 
-$toggleDirfrbLocDesktop="g:/git/doToggle/";
-$toggleDirfrbLoc="/msu/home/m1gsa00/git/doToggle/";
-$toggleDirgaryMacLoc="/Users/garyanderson/git/doToggle/";
-$toggleDirLoc=
-Which[
-FileExistsQ[$toggleDirfrbLoc],$toggleDirfrbLoc,
-FileExistsQ[$toggleDirfrbLocDesktop],$toggleDirfrbLocDesktop,
-FileExistsQ[$toggleDirgaryMacLoc],$toggleDirgaryMacLoc
-];
-SetDirectory[$toggleDirLoc]
 
 AddToClassPath[FileNameJoin[{$reposLoc,"gov/frb/ma/msu/dynareAntlr/1.0/dynareAntlr-1.0.jar"}]]
 AddToClassPath[FileNameJoin[{$reposLoc,"org/antlr/antlr/3.5.2/antlr-3.5.2.jar"}]]
