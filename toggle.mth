@@ -1,7 +1,7 @@
 (*should be in run from doToggle directory,
 subdirectory of the directory git containing 
 the required directories*)
-$toggleDirLoc=Directory[]<>"/";
+$toggleDirLoc=FileNameJoin[{Directory[],"/"},OperatingSystem->$OperatingSystem];
 $toGit="../";
 
 $fmtPath=$toGit<>"paperProduction/FormatOptimize/";
@@ -28,7 +28,7 @@ $amaSer,
 $smolPath*)}];
 Needs["JLink`"]
 InstallJava[];
-$toSoftware=$toGit<> "../softwareInstalls/"
+$toSoftware=$toGit<> "../softwareInstalls/";
 
 
 Needs["AMAModel`"]

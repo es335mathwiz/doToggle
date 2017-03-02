@@ -20,3 +20,4 @@ modelDefaultParameters[rbcForC]={};
 modelFpGuess[rbcForC]=fpVal;
 
 Private`doSplice[rbcForC,"rbcTryC"]
+generateCCode[rbcForC,"rbcTryC"]
