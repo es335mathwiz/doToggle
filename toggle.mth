@@ -27,7 +27,9 @@ $stackStochPath
 $amaSer,
 $smolPath*)}];
 Needs["JLink`"]
+(*
 InstallJava[];
+*)
 $toSoftware=$toGit<> "../softwareInstalls/";
 
 
