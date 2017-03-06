@@ -1,8 +1,9 @@
 
 
+
 /*Mathematica Creation Date{2017, 3, 3, 17, 48, 5.631265}*/
 /*rbc example model*/
-#include "/lcl/msu/home/m1gsa00/git/stackStochSims/lagLead.h"
+#include "/msu/home/m1gsa00/git/stackStochSims/lagLead.h"
 #include <math.h>
 #define aDummy(t)     (stateVector[(t-(-1))*4+0])
 #define cc(t)     (stateVector[(t-(-1))*4+1])
@@ -19,6 +20,7 @@
 
 
 
+
 void rbcExampleDerivative(double *stateVector,double *parameters,
 double * aMat,int * jaMat,int *iaMat)
 {
@@ -26,6 +28,7 @@ double shockVec[1]={0.};
 double homotopyAlpha[1]={1.};double linearizationPoint[1]={0.0};
 rbcExampleDerivativeHomotopy(stateVector,parameters,shockVec,aMat,jaMat,iaMat,homotopyAlpha,linearizationPoint);
 }
+
 
 
 

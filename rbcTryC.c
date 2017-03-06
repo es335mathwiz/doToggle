@@ -1,6 +1,7 @@
+
 /*Mathematica Creation Date {2017, 3, 3, 17, 48, 5.631265}*/
 /*rbc example model*/
-#include "/lcl/msu/home/m1gsa00/git/stackStochSims/lagLead.h"
+#include "/msu/home/m1gsa00/git/stackStochSims/lagLead.h"
 #include <math.h>
 #define aDummy(t)     (stateVector[(t-(-1))*4+0])
 #define cc(t)     (stateVector[(t-(-1))*4+1])
@@ -12,6 +13,7 @@
 #define linPt$theta(t)     (linearizationPoint[(t-(-1))*4+3])
 
 #define modelShock(n) (shockVec[n])
+
 
 void rbcExample(double *stateVector,double *parameters,
 double * shockVec,
