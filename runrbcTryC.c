@@ -6,7 +6,7 @@
 /*rbc example model*/
 #include <stdlib.h>
 /*#include<stdio.h>*/
-#include "/msu/home/m1gsa00/git/stackStochSims/runItExternalDefs.h"
+#include "../stackStochSims/runItExternalDefs.h"
 
 FILE * outFile;
 
@@ -34,10 +34,10 @@ int numSHOCKS=500;
 double * theData;
 
 
-#include "/msu/home/m1gsa00/git/stackStochSims/runItOther.h"
+#include "../stackStochSims/runItOther.h"
 main(int argc, char * argv[])
 {
-#include "/msu/home/m1gsa00/git/stackStochSims/runItInvariantLocalDefs.h"
+#include "../stackStochSims/runItInvariantLocalDefs.h"
 #include "runrbcTryCLocalDefs.h"
 printf(" runIt.mc, 2016 m1gsa00 \n");
 

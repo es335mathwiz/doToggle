@@ -1,7 +1,7 @@
 
 /*Mathematica Creation Date {2017, 3, 3, 17, 48, 5.631265}*/
 /*rbc example model*/
-#include "/msu/home/m1gsa00/git/stackStochSims/lagLead.h"
+#include "../stackStochSims/lagLead.h"
 #include <math.h>
 #define aDummy(t)     (stateVector[(t-(-1))*4+0])
 #define cc(t)     (stateVector[(t-(-1))*4+1])
