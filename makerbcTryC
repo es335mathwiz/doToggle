@@ -1,3 +1,19 @@
+
+UNAME= $(shell uname)
+
+
+ifeq ($(UNAME),Linux)
+narPath=../sparseAMA/target/nar/sparseAMA-1.0-SNAPSHOT-amd64-Linux-g++-shared/lib/amd64-Linux-g++/shared
+endif
+
+ifeq ($(UNAME),Darwin)
+narPath = ../sparseAMA/target/nar/sparseAMA-1.0-SNAPSHOT-x86_64-MacOSX-g++-shared/lib/x86_64-MacOSX-g++/shared/
+endif
+
+
+
+
+
 #LAPACK  = -L/opt/atlas/lib/ -lcblas -lf77blas -latlas -llapack
 CSTOCHSIMSDIR = ../CStochSims/
 SPAMADIR = ../sparseAMA
@@ -17,7 +33,7 @@ DEBSTOCHLIB = $(CSTOCHSIMSDIR)
 
 CFLAGS = -c  -fno-builtin-exit -fno-builtin-strcat -fno-builtin-strncat -fno-builtin-strcpy -fno-builtin-strlen -fno-builtin-calloc
 
-LINKFLAGS =   -v  -lc -ldl -lm -L../sparseAMA/target/nar/sparseAMA-1.0-SNAPSHOT-amd64-Linux-g++-shared/lib/amd64-Linux-g++/shared -lsparseAMA-1.0-SNAPSHOT $(CSTOCHSIMSDIR)stackC.o $(CSTOCHSIMSDIR)stochProto.o
+LINKFLAGS =   -v  -lc -ldl -lm -L$(narPath) -lsparseAMA-1.0-SNAPSHOT $(CSTOCHSIMSDIR)stackC.o $(CSTOCHSIMSDIR)stochProto.o
 
 .SUFFIXES:	.o .c .h
 
