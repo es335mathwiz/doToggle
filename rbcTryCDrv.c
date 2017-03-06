@@ -21,15 +21,6 @@
 
 
 
-void rbcExampleDerivative(double *stateVector,double *parameters,
-double * aMat,int * jaMat,int *iaMat)
-{
-double shockVec[1]={0.};
-double homotopyAlpha[1]={1.};double linearizationPoint[1]={0.0};
-rbcExampleDerivativeHomotopy(stateVector,parameters,shockVec,aMat,jaMat,iaMat,homotopyAlpha,linearizationPoint);
-}
-
-
 
 
 
@@ -297,3 +288,14 @@ aplb_(&hrows,&hcols,&aOne,bMat,jbMat,ibMat,cMat,jcMat,icMat,
 aMat,jaMat,iaMat,&maxNumberHElements,okay,&ierr);
 }
 }
+
+
+
+void rbcExampleDerivative(double *stateVector,double *parameters,
+double * aMat,int * jaMat,int *iaMat)
+{
+double shockVec[1]={0.};
+double homotopyAlpha[1]={1.};double linearizationPoint[1]={0.0};
+rbcExampleDerivativeHomotopy(stateVector,parameters,shockVec,aMat,jaMat,iaMat,homotopyAlpha,linearizationPoint);
+}
+
