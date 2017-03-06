@@ -1,0 +1,84 @@
+#LAPACK  = -L/opt/atlas/lib/ -lcblas -lf77blas -latlas -llapack
+CSTOCHSIMSDIR = ../CStochSims/
+SPAMADIR = ../sparseAMA
+
+RANLIBLOC = $(CSTOCHSIMSDIR)/ranlib.o
+DEBRANLIBLOC = $(RANLIBLOC)
+
+
+SPAMALIB = $(CSTOCHSIMSDIR)
+DEBSPAMALIB = $(CSTOCHSIMSDIR)
+
+STACKLIB = $(CSTOCHSIMSDIR)
+DEBSTACKLIB = $(CSTOCHSIMSDIR)
+
+STOCHLIB = $(CSTOCHSIMSDIR)
+DEBSTOCHLIB = $(CSTOCHSIMSDIR)
+
+CFLAGS = -c  -fno-builtin-exit -fno-builtin-strcat -fno-builtin-strncat -fno-builtin-strcpy -fno-builtin-strlen -fno-builtin-calloc
+
+LINKFLAGS =   -v  -lc -ldl -lm -L../sparseAMA/target/nar/sparseAMA-1.0-SNAPSHOT-amd64-Linux-g++-shared/lib/amd64-Linux-g++/shared -lsparseAMA-1.0-SNAPSHOT $(CSTOCHSIMSDIR)stackC.o $(CSTOCHSIMSDIR)stochProto.o
+
+.SUFFIXES:	.o .c .h
+
+
+
+
+debrbcTryC.o:	rbcTryC.c
+	gcc $(CFLAGS) -g -pg -o debrbcTryC.o rbcTryC.c
+debrbcTryCDrv.o:	rbcTryCDrv.c
+	gcc $(CFLAGS) -g -pg -o debrbcTryCDrv.o rbcTryCDrv.c
+debrbcTryCSupport.o:	rbcTryCSupport.c
+	gcc $(CFLAGS) -g -pg -o debrbcTryCSupport.o rbcTryCSupport.c
+debrbcTryCData.o:	rbcTryCData.c
+	gcc $(CFLAGS) -g -pg -o debrbcTryCData.o rbcTryCData.c
+debrbcTryCShocks.o:	rbcTryCShocks.c
+	gcc $(CFLAGS) -g -pg -o debrbcTryCShocks.o rbcTryCShocks.c
+debrunrbcTryC.o:	runrbcTryC.c  runrbcTryCLocalDefs.h
+	gcc $(CFLAGS) -g -pg -o debrunrbcTryC.o runrbcTryC.c 
+
+
+
+
+rbcTryC.o:	rbcTryC.c
+	gcc $(CFLAGS) -O4  -o rbcTryC.o rbcTryC.c
+rbcTryCDrv.o:	rbcTryCDrv.c
+	gcc $(CFLAGS) -O4  -o rbcTryCDrv.o rbcTryCDrv.c
+rbcTryCSupport.o:	rbcTryCSupport.c
+	gcc $(CFLAGS) -O4  -o rbcTryCSupport.o rbcTryCSupport.c
+rbcTryCData.o:	rbcTryCData.c
+	gcc $(CFLAGS) -O4  -o rbcTryCData.o rbcTryCData.c
+rbcTryCShocks.o:	rbcTryCShocks.c
+	gcc $(CFLAGS) -O4  -o rbcTryCShocks.o rbcTryCShocks.c
+
+
+runrbcTryC.o:	runrbcTryC.c runrbcTryCLocalDefs.h
+	gcc $(CFLAGS) -O4 runrbcTryC.c 
+
+mpirunrbcTryC.o:	mpirunrbcTryC.c runrbcTryCLocalDefs.h
+	gcc $(CFLAGS) -O4 mpirunrbcTryC.c 
+
+
+runrbcTryC:	rbcTryC.o runrbcTryC.o \
+	rbcTryCDrv.o rbcTryCSupport.o \
+	rbcTryCData.o rbcTryCShocks.o 
+	gfortran -o runrbcTryC -O4 rbcTryC.o runrbcTryC.o \
+	rbcTryCDrv.o rbcTryCSupport.o \
+	rbcTryCData.o rbcTryCShocks.o \
+	  $(RANLIBLOC) $(CSTOCHSIMSDIR)myNewt.o ../CStochSims/ma50ad.o  ../CStochSims/dtime.o\
+		-v  -lc -ldl -lm  $(LINKFLAGS) $(LAPACK) 
+		@echo "to run requires runtime mod-> LD_LIBRARY_PATH=../sparseAMA/target/nar/sparseAMA-1.0-SNAPSHOT-amd64-Linux-g++-shared/lib/amd64-Linux-g++/shared:$(LD_LIBRARY_PATH)"
+
+
+
+
+debrunrbcTryC:	debrbcTryC.o debrunrbcTryC.o \
+	debrbcTryCDrv.o debrbcTryCSupport.o \
+	debrbcTryCData.o debrbcTryCShocks.o 
+	gfortran -g -o debrunrbcTryC  debrbcTryC.o debrunrbcTryC.o \
+	debrbcTryCDrv.o debrbcTryCSupport.o \
+	debrbcTryCData.o debrbcTryCShocks.o \
+	  $(RANLIBLOC) $(CSTOCHSIMSDIR)debMyNewt.o ../CStochSims/ma50ad.o  ../CStochSims/dtime.o\
+		-v  -lc -ldl -lm  $(LINKFLAGS) $(LAPACK) 
+		@echo "to run requires runtime mod-> LD_LIBRARY_PATH=../sparseAMA/target/nar/sparseAMA-1.0-SNAPSHOT-amd64-Linux-g++-shared/lib/amd64-Linux-g++/shared:$(LD_LIBRARY_PATH)"
+
