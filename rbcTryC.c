@@ -14,16 +14,6 @@
 
 #define modelShock(n) (shockVec[n])
 
-
-void rbcExample(double *stateVector,double *parameters,
-double * shockVec,
-double * aMat,int * jaMat,int *iaMat)
-{
-double homotopyAlpha[1]={1.0};double linearizationPoint[1]={0.0};
-rbcExampleHomotopy(stateVector,parameters,shockVec,aMat,jaMat,iaMat,homotopyAlpha,linearizationPoint);
-}
-
-
 void rbcExampleHomotopy(double *stateVector,double *parameters,
 double * shockVec,
 double * aMat,int * jaMat,int *iaMat,double * homotopyAlpha,double * linearizationPoint
@@ -240,3 +230,15 @@ for(i=0;i<4;i++){aMat[i]=aMat[i]+(*homotopyAlpha*bMat[i]);};
 }
 }
 }
+
+
+
+void rbcExample(double *stateVector,double *parameters,
+double * shockVec,
+double * aMat,int * jaMat,int *iaMat)
+{
+double homotopyAlpha[1]={1.0};double linearizationPoint[1]={0.0};
+rbcExampleHomotopy(stateVector,parameters,shockVec,aMat,jaMat,iaMat,homotopyAlpha,linearizationPoint);
+}
+
+
