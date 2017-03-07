@@ -35,7 +35,8 @@ double * theData;
 
 
 #include "../stackStochSims/runItOther.h"
-main(int argc, char * argv[])
+void cfree(void * ptr){free(ptr);}
+int main(int argc, char * argv[])
 {
 #include "../stackStochSims/runItInvariantLocalDefs.h"
 #include "runrbcTryCLocalDefs.h"
