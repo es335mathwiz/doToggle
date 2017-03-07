@@ -10,9 +10,10 @@ ifeq ($(UNAME),Darwin)
 narPath = ../sparseAMA/target/nar/sparseAMA-1.0-SNAPSHOT-x86_64-MacOSX-g++-shared/lib/x86_64-MacOSX-g++/shared/
 endif
 
+SPAMADIR = ../sparseAMA
 
 
-
+LAPACKLIBS=    -llapack -lblas -L/opt/julia/0.4.6/lib/julia/ -larpack -lopenblas64_
 
 #LAPACK  = -L/opt/atlas/lib/ -lcblas -lf77blas -latlas -llapack
 CSTOCHSIMSDIR = ../CStochSims/
@@ -33,7 +34,7 @@ DEBSTOCHLIB = $(CSTOCHSIMSDIR)
 
 CFLAGS = -c  -fno-builtin-exit -fno-builtin-strcat -fno-builtin-strncat -fno-builtin-strcpy -fno-builtin-strlen -fno-builtin-calloc
 
-LINKFLAGS =   -v  -lc -ldl -lm -L$(narPath) -lsparseAMA-1.0-SNAPSHOT $(CSTOCHSIMSDIR)stackC.o $(CSTOCHSIMSDIR)stochProto.o
+LINKFLAGS =   -v  -lc -ldl -lm $(SPAMADIR)/sparseAMA.o $(SPAMADIR)/dnaupd.o $(SPAMADIR)/dneupd.o $(SPAMADIR)/sparskit2.o $(CSTOCHSIMSDIR)stackC.o $(CSTOCHSIMSDIR)stochProto.o $(LAPACKLIBS)
 
 .SUFFIXES:	.o .c .h
 
@@ -81,7 +82,8 @@ runrbcTryC:	rbcTryC.o runrbcTryC.o \
 	gfortran -o runrbcTryC -O4 rbcTryC.o runrbcTryC.o \
 	rbcTryCDrv.o rbcTryCSupport.o \
 	rbcTryCData.o rbcTryCShocks.o \
-	  $(RANLIBLOC) $(CSTOCHSIMSDIR)myNewt.o ../CStochSims/ma50ad.o  ../CStochSims/dtime.o\
+	  $(RANLIBLOC) $(CSTOCHSIMSDIR)myNewt.o ../CStochSims/ma50ad.o  ../CStochSims/dtime.o  ../CStochSims/idamax.o \
+../CStochSims/dtrsv.o  ../CStochSims/xerbla.o ../CStochSims/lsame.o  ../CStochSims/dgemm.o  ../CStochSims/dgemv.o  ../CStochSims/dscal.o  ../CStochSims/dswap.o  ../CStochSims/ddot.o  ../CStochSims/dtrsm.o  ../CStochSims/daxpy.o\
 		-v  -lc -ldl -lm  $(LINKFLAGS) $(LAPACK) 
 		@echo "to run requires runtime mod-> LD_LIBRARY_PATH=../sparseAMA/target/nar/sparseAMA-1.0-SNAPSHOT-amd64-Linux-g++-shared/lib/amd64-Linux-g++/shared:$(LD_LIBRARY_PATH)"
 
@@ -94,7 +96,8 @@ debrunrbcTryC:	debrbcTryC.o debrunrbcTryC.o \
 	gfortran -g -o debrunrbcTryC  debrbcTryC.o debrunrbcTryC.o \
 	debrbcTryCDrv.o debrbcTryCSupport.o \
 	debrbcTryCData.o debrbcTryCShocks.o \
-	  $(RANLIBLOC) $(CSTOCHSIMSDIR)debMyNewt.o ../CStochSims/ma50ad.o  ../CStochSims/dtime.o\
+	  $(RANLIBLOC) $(CSTOCHSIMSDIR)debMyNewt.o ../CStochSims/ma50ad.o  ../CStochSims/dtime.o ../CStochSims/idamax.o \
+../CStochSims/dtrsv.o  ../CStochSims/xerbla.o ../CStochSims/lsame.o  ../CStochSims/dgemm.o  ../CStochSims/dgemv.o  ../CStochSims/dscal.o  ../CStochSims/dswap.o  ../CStochSims/ddot.o  ../CStochSims/dtrsm.o  ../CStochSims/daxpy.o\
 		-v  -lc -ldl -lm  $(LINKFLAGS) $(LAPACK) 
 		@echo "to run requires runtime mod-> LD_LIBRARY_PATH=../sparseAMA/target/nar/sparseAMA-1.0-SNAPSHOT-amd64-Linux-g++-shared/lib/amd64-Linux-g++/shared:$(LD_LIBRARY_PATH)"
 
