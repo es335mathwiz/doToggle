@@ -3,6 +3,7 @@
 
 /*Mathematica Creation Date{2017, 3, 3, 17, 48, 5.631265}*/
 /*rbc example model*/
+#include "stackC.h"
 #include "../stackStochSims/lagLead.h"
 #include <math.h>
 #define aDummy(t)     (stateVector[(t-(-1))*4+0])
@@ -38,7 +39,7 @@ int jcMat[11];
 int aOne=1;int ierr;int maxNumberHElements;
 int hrows=4;
 int hcols=3*4;
-double okay[50000];
+int iokay[50000];
 if(*homotopyAlpha>=1.0) {
 double okay10;
 double okay14;
@@ -285,7 +286,7 @@ for(i=0;i<11;i++){cMat[i]=cMat[i]*(*homotopyAlpha);};
 }
 maxNumberHElements=11;
 aplb_(&hrows,&hcols,&aOne,bMat,jbMat,ibMat,cMat,jcMat,icMat,
-aMat,jaMat,iaMat,&maxNumberHElements,okay,&ierr);
+aMat,jaMat,iaMat,&maxNumberHElements,iokay,&ierr);
 }
 }
 

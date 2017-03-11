@@ -6,7 +6,7 @@
 /*rbc example model*/
 #include "../stackStochSims/lagLead.h"
 #include <math.h>
-static double maxarg1,maxarg2;
+/*static double maxarg1,maxarg2;*/
 #include <math.h>
 
 double FMAX(double a,double b)
@@ -53,8 +53,8 @@ void rbcExamplePeriodicPointGuesser
 (double * parameters,int period,
 	double guessVector[3][4])
 {
-int i,j;
-double svalue;
+/*int i,j;*/
+/*double svalue;*/
 int timeOffset;
 for(timeOffset=0;
 	timeOffset<period+ 3 - 1;
@@ -100,7 +100,7 @@ jaMat[0]=1.;
 void rbcExampleSelectZ(double * aMat,int * jaMat,int *iaMat
 )
 {
-aMat;
+/*aMat;*/
 iaMat[0]=1.;
-jaMat;
+/*jaMat;*/
 }

@@ -21,8 +21,8 @@ double * aMat,int * jaMat,int *iaMat,double * homotopyAlpha,double * linearizati
 {
 int i;
 double bMat[4];
-int ibMat[4+1];
-int jbMat[4];
+/*int ibMat[4+1];*/
+/*int jbMat[4];*/
 if(*homotopyAlpha>=1.0) {
 double okay1;
 double okay5;

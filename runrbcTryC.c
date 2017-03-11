@@ -7,8 +7,13 @@
 #include <stdlib.h>
 /*#include<stdio.h>*/
 #include "../stackStochSims/runItExternalDefs.h"
-
+void rbcExampleData(int t,double * vectorOfVals);
+void rbcExampleShocks(int t,double * vectorOfVals);
+void rbcExamplePeriodicPointGuesser(double * parameters,int period,double*);
 FILE * outFile;
+#include "useSparseAMA.h"
+#include "stackC.h"
+#include "stochProto.h"
 
 #define PATHLENGTH 1000
 
@@ -191,7 +196,7 @@ printf("after using Q matrix\ntotalTime=%f,userSystemTime=%f,systemTime=%f\n",
 printf("saving values for variable in file named %s\n",flnm);
 fprintf(outFile,"rbcExampleRunParams={%d,%d,%d,%d,%d,%d,%d};\n",
     rbcNEQS,rbcNLAGS,rbcNLEADS,
-     *pathLength,*t0,stochasticPathLength,*replications);
+     *pathLength,*t0,*stochasticPathLength,*replications);
 fPrintMathInt(outFile,*replications,failedQ,"rbcExampleFailedQ");
 fPrintMathInt(outFile,*replications * (*stochasticPathLength),
       rbcExamplePermVec,"rbcExamplePermVec");
