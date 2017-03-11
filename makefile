@@ -6,8 +6,8 @@ SPAMADIR=../sparseAMA
 ifeq ($(UNAME),Linux)
 #compilers
 CC = gcc
-FCFLAGS = -c -O2 -I $(SPAMADIR)/src/main/include   -I /msu/res5/software/myUsr/include/ -I../stackStochSims/ -I../CStochSims/
-FCFLAGS = -c -g -Wall -I $(SPAMADIR)/src/main/include   -I /msu/res5/software/myUsr/include -I../stackStochSims/ -I../CStochSims/
+FCFLAGS = -c -O2 -I $(SPAMADIR)/src/main/include   -I /msu/res5/software/myUsr/include/  -I../CStochSims/
+FCFLAGS = -c -g -Wall -I $(SPAMADIR)/src/main/include   -I /msu/res5/software/myUsr/include  -I../CStochSims/
 #lapack
 LAPACKLIBS=   -L /msu/res5/software/ARPACK96forCluster -larpack_linux -L/msu/res5/software/lapackGithubForCluster -llapack -lrefblas
 CUNITLIBS= -L /msu/res5/software/myUsr/lib/ -l cunit
@@ -16,8 +16,8 @@ endif
 ifeq ($(UNAME),Darwin)
 #compilers
 CC = gcc-6
-FCFLAGS = -c -O2 -I$(SPAMADIR)/src/main/include   -I /Users/garyanderson/myUsr/include/ -I../stackStochSims/ -I../CStochSims/
-FCFLAGS = -c -Wall -g -I $(SPAMADIR)/src/main/include   -I /Users/garyanderson/myUsr/include/ -I../stackStochSims/ -I../CStochSims/
+FCFLAGS = -c -O2 -I$(SPAMADIR)/src/main/include   -I /Users/garyanderson/myUsr/include/  -I../CStochSims/
+FCFLAGS = -c -Wall -g -I $(SPAMADIR)/src/main/include   -I /Users/garyanderson/myUsr/include/  -I../CStochSims/
 #lapack
 LAPACKLIBS=  -L /Users/garyanderson/ARPACK96/  -larpack_MACOS -L /Users/garyanderson/lapack-release/ -llapack -lrefblas
 CUNITLIBS= -L /Users/garyanderson/myUsr/lib -l cunit
