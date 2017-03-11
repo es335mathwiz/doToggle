@@ -16,8 +16,8 @@ endif
 ifeq ($(UNAME),Darwin)
 #compilers
 CC = gcc-6
-FCFLAGS = -c -O2 -I$(SPAMADIR)/src/main/include   -I /Users/garyanderson/myUsr/include/ -I../stackStochSims/
-FCFLAGS = -c -Wall -g -I $(SPAMADIR)/src/main/include   -I /Users/garyanderson/myUsr/include/ -I../stackStochSims/
+FCFLAGS = -c -O2 -I$(SPAMADIR)/src/main/include   -I /Users/garyanderson/myUsr/include/ -I../stackStochSims/ -I../CStochSims/
+FCFLAGS = -c -Wall -g -I $(SPAMADIR)/src/main/include   -I /Users/garyanderson/myUsr/include/ -I../stackStochSims/ -I../CStochSims/
 #lapack
 LAPACKLIBS=  -L /Users/garyanderson/ARPACK96/  -larpack_MACOS -L /Users/garyanderson/lapack-release/ -llapack -lrefblas
 CUNITLIBS= -L /Users/garyanderson/myUsr/lib -l cunit
