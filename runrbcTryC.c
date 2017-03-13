@@ -195,28 +195,19 @@ rbcExamplePathQ,
 failedQ);
 
 
+/* Here all the stuff related to Performance analysis: */
+    INIT_TIME
+    
+    START_GET_THE_TIME
+
+    STOP_GET_THE_TIME
+    
+    fprintf (stdout, "We have spent %lf executing my_function_to_measure.\n", 
+             elaps_s + ((double)elaps_ns) / 1.0e9 );
 
 
-/**totalTime=dtime(userSystemTime);*/
-clock_t start,end;
-double cpu_time_used;
-start=clock();
-end=clock();
-cpu_time_used=((double)(end-start))/CLOCKS_PER_SEC;
-printf("start=%lu,end=%lu,used=%e\n",start,end,cpu_time_used);
-#include <unistd.h> 
-#include <stdint.h> 
-#include <sys/times.h>
-#include <sys/types.h>
-struct tms t;
-printf("tick frequency is: %lu\n", sysconf(_SC_CLK_TCK)); 
-if (times(&t) < 0) 
-{ perror("times"); /* error - print a message and exit */ exit(1); } 
-/* print the results */ 
-printf("user time: %ju ticks\n", (uintmax_t) t.tms_utime); 
-printf("system time: %ju ticks\n", (uintmax_t) t.tms_stime); 
-printf("chidren - user time: %ju ticks\n", (uintmax_t) t.tms_cutime); 
-printf("chidren - system time: %ju ticks\n", (uintmax_t) t.tms_cstime); 
+
+
 
 
 printf("after using Q matrix\ntotalTime=%f,userSystemTime=%f,systemTime=%f\n",
