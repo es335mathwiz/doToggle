@@ -63,4 +63,4 @@ runrbcTryC: runrbcTryC.o	rbcTryC.o \
 	rbcTryCData.o rbcTryCShocks.o  $(STOCHSIMSLIB) $(SPARSEAMALIB) $(LAPACKLIBS)
 
 clean: 
-	rm -f *.o rbcTryC libstochSims
+	rm -f *.o runrbcTryC 
