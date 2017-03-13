@@ -1,7 +1,7 @@
 
 /*Mathematica Creation Date {2017, 3, 3, 17, 48, 5.631265}*/
 /*rbc example model*/
-#include "../stackStochSims/lagLead.h"
+#include "stochProto.h"
 #include <math.h>
 #define aDummy(t)     (stateVector[(t-(-1))*4+0])
 #define cc(t)     (stateVector[(t-(-1))*4+1])
@@ -16,14 +16,14 @@
 
 void rbcExampleHomotopy(double *stateVector,double *parameters,
 double * shockVec,
-double * aMat,int * jaMat,int *iaMat,double * homotopyAlpha,double * linearizationPoint
+double * aMat,int * jaMat,int *iaMat,double * rbchomotopyAlpha , double * linearizationPoint
 )
 {
 int i;
 double bMat[4];
 /*int ibMat[4+1];*/
 /*int jbMat[4];*/
-if(*homotopyAlpha>=1.0) {
+if(*rbchomotopyAlpha>=1.0) {
 double okay1;
 double okay5;
 double okay7;
@@ -140,7 +140,7 @@ iaMat[2]=1.;
 
 iaMat[3]=1.;
 
-if(*homotopyAlpha>0.0) {
+if(*rbchomotopyAlpha>0.0) {
 double okay1;
 double okay10;
 double okay11;
@@ -226,7 +226,7 @@ iaMat[2]=1.;
 
 iaMat[3]=1.;
 
-for(i=0;i<4;i++){aMat[i]=aMat[i]+(*homotopyAlpha*bMat[i]);};
+for(i=0;i<4;i++){aMat[i]=aMat[i]+(*rbchomotopyAlpha*bMat[i]);};
 }
 }
 }
@@ -237,8 +237,8 @@ void rbcExample(double *stateVector,double *parameters,
 double * shockVec,
 double * aMat,int * jaMat,int *iaMat)
 {
-double homotopyAlpha[1]={1.0};double linearizationPoint[1]={0.0};
-rbcExampleHomotopy(stateVector,parameters,shockVec,aMat,jaMat,iaMat,homotopyAlpha,linearizationPoint);
+double rbchomotopyAlpha[1]={1.0};double linearizationPoint[1]={0.0};
+rbcExampleHomotopy(stateVector,parameters,shockVec,aMat,jaMat,iaMat,rbchomotopyAlpha,linearizationPoint);
 }
 
 

@@ -55,12 +55,12 @@ runrbcTryC.o:	runrbcTryC.c runrbcTryCLocalDefs.h
 
 
 
-runrbcTryC:	rbcTryC.o runrbcTryC.o \
+runrbcTryC: runrbcTryC.o	rbcTryC.o \
 	rbcTryCDrv.o rbcTryCSupport.o \
 	rbcTryCData.o rbcTryCShocks.o
-	$(FC) -o runrbcTryC -g rbcTryC.o runrbcTryC.o \
+	$(FC) -o runrbcTryC -g runrbcTryC.o  rbcTryC.o \
 	rbcTryCDrv.o rbcTryCSupport.o \
 	rbcTryCData.o rbcTryCShocks.o  $(STOCHSIMSLIB) $(SPARSEAMALIB) $(LAPACKLIBS)
 
 clean: 
-	rm -f *.o rbcTryC
+	rm -f *.o rbcTryC libstochSims

@@ -4,7 +4,7 @@
 /*Mathematica Creation Date{2017, 3, 3, 17, 48, 5.631265}*/
 /*rbc example model*/
 #include "stackC.h"
-#include "../stackStochSims/lagLead.h"
+#include "stochProto.h"
 #include <math.h>
 #define aDummy(t)     (stateVector[(t-(-1))*4+0])
 #define cc(t)     (stateVector[(t-(-1))*4+1])
@@ -27,7 +27,7 @@
 
 void rbcExampleDerivativeHomotopy(double *stateVector,double *parameters,
 double * shockVec,
-double * aMat,int * jaMat,int *iaMat,double * homotopyAlpha,double * linearizationPoint
+double * aMat,int * jaMat,int *iaMat,double * rbchomotopyAlpha,double * linearizationPoint
 )
 {int i;
 double bMat[11];
@@ -40,7 +40,7 @@ int aOne=1;int ierr;int maxNumberHElements;
 int hrows=4;
 int hcols=3*4;
 int iokay[50000];
-if(*homotopyAlpha>=1.0) {
+if(*rbchomotopyAlpha>=1.0) {
 double okay10;
 double okay14;
 double okay4;
@@ -196,7 +196,7 @@ iaMat[3]=1.;
 /*initialize cMat to zero sparse matrix*/
 for(i=0;i<=4+1;i++){icMat[i]=1;}
 for(i=0;i<11;i++){cMat[i]=0;};
-if(*homotopyAlpha>0.0) {
+if(*rbchomotopyAlpha>0.0) {
 double okay1;
 double okay10;
 double okay11;
@@ -282,7 +282,7 @@ iaMat[2]=1.;
 
 iaMat[3]=1.;
 
-for(i=0;i<11;i++){cMat[i]=cMat[i]*(*homotopyAlpha);};
+for(i=0;i<11;i++){cMat[i]=cMat[i]*(*rbchomotopyAlpha);};
 }
 maxNumberHElements=11;
 aplb_(&hrows,&hcols,&aOne,bMat,jbMat,ibMat,cMat,jcMat,icMat,
@@ -296,7 +296,7 @@ void rbcExampleDerivative(double *stateVector,double *parameters,
 double * aMat,int * jaMat,int *iaMat)
 {
 double shockVec[1]={0.};
-double homotopyAlpha[1]={1.};double linearizationPoint[1]={0.0};
-rbcExampleDerivativeHomotopy(stateVector,parameters,shockVec,aMat,jaMat,iaMat,homotopyAlpha,linearizationPoint);
+double rbchomotopyAlpha[1]={1.};double linearizationPoint[1]={0.0};
+rbcExampleDerivativeHomotopy(stateVector,parameters,shockVec,aMat,jaMat,iaMat,rbchomotopyAlpha,linearizationPoint);
 }
 

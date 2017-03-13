@@ -1,34 +1,51 @@
-
-
-
-
 /*Mathematica Creation Date{2017, 3, 3, 17, 48, 5.631265}*/
 /*rbc example model*/
 #include <stdlib.h>
-/*#include<stdio.h>*/
-#include "../stackStochSims/runItExternalDefs.h"
+#include<stdio.h>
+
 void rbcExampleData(int t,double * vectorOfVals);
 void rbcExampleShocks(int t,double * vectorOfVals);
 void rbcExamplePeriodicPointGuesser(double * parameters,int period,double*);
-FILE * outFile;
-#include "useSparseAMA.h"
+/*#include "useSparseAMA.h"*/
 #include "stackC.h"
 #include "stochProto.h"
+/*modelDimensions call determines these*/
+FILE * outFile;
 
 #define PATHLENGTH 1000
-
-
 #define rbcNLAGS 1
 #define rbcNLEADS 1
 #define rbcNEQS 4
 #define SHOCKS 30
 #define DATA 50
-
 #define PATHLENGTH 1000
+
+int  numberOfEquations[1]={rbcNEQS};
+int  lags[1]={rbcNLAGS};
+int  leads[1]={rbcNLEADS};
+int pathLength[1]={PATHLENGTH};
+int stochasticPathLength[1]={PATHLENGTH};
+FILE * outFile;
+ /* char outFileName[250];*/
+static char flnm[50] = "stochOut.m";
+/*a counter*/
+int i;/*int j;*/
+/*modelDimensions call determines these*/
+int t0[1]={0};
+int tf[1]={0};
+int replications[1]={1};
+double totalTime[1];
+double userSystemTime[2];
+/*int shockIndex[1];*/
+int  numberOfParameters;
+/*int  numberOfDataValues;*/
+/*int  numberOfShocks;*/
+/*int  numberExog;*/
+
+
 
 int numberOfData[1]={DATA};
 int numberOfShocks[1]={SHOCKS};
-int numberOfEquations[1]={rbcNEQS};
 
 char * namesArray[] =  {"aDummy", "cc", "kk", "theta"};
 char * paramNamesArray[] = {};
@@ -39,11 +56,9 @@ int numSHOCKS=500;
 double * theData;
 
 
-#include "../stackStochSims/runItOther.h"
 void cfree(void * ptr){free(ptr);}
 int main(int argc, char * argv[])
 {
-#include "../stackStochSims/runItInvariantLocalDefs.h"
 #include "runrbcTryCLocalDefs.h"
 printf(" runIt.mc, 2016 m1gsa00 \n");
 
@@ -161,8 +176,8 @@ rbcExamplePeriodicPointGuesser(parameters,1,
 rbcExamplePathQ+(i *rbcNEQS));}
 
 
-int  dtime(double * userSystemTime);
-*totalTime=dtime(userSystemTime);
+/*int  dtime(double * userSystemTime);*/
+/**totalTime=dtime(userSystemTime);*/
 printf("after computing Q matrix totalTime=%f,userSystemTime=%f,systemTime=%f",*totalTime,*userSystemTime,*(userSystemTime+1));
 printf("using q matrix");
 
@@ -182,7 +197,7 @@ failedQ);
 
 
 
-*totalTime=dtime(userSystemTime);
+/**totalTime=dtime(userSystemTime);*/
 printf("after using Q matrix\ntotalTime=%f,userSystemTime=%f,systemTime=%f\n",
 *totalTime,*userSystemTime,*(userSystemTime+1));
 
